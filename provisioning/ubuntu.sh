@@ -1,12 +1,12 @@
 #!/bin/bash
 
-. /vagrant/provisioning/settings.sh
+. ${VAGRANT_DEV_HOME}/provisioning/settings.sh
 
 DIST_UPGRADE=$1
 HOSTNAME=$2
 PROJECT_OS_DEPENDENCIES=$3
 
-APPLICATIONS_DIR="/vagrant/vendor/vagrant-dev/provisioning/ubuntu"
+APPLICATIONS_DIR="${VAGRANT_DEV_HOME}/provisioning/ubuntu"
 
 APPLICATIONS=( ${PROJECT_OS_DEPENDENCIES} )
 

@@ -70,7 +70,7 @@ echo
 echo "You can access phpmyadmin from http://<hostname_or_IP>/phpmyadmin"
 echo
 
-# /vagrant/provisioning/fragments/server-php.sh
+# ${VAGRANT_DEV_HOME}/provisioning/fragments/server-php.sh
 
 # rpm --import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt
 # yum -y install http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.i686.rpm

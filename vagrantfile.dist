@@ -8,17 +8,17 @@
 
 Vagrant.configure("2") do |config|
 
-    project.slugname   = 'sluged-project-name'
-    project.os.name    = 'ubuntu'
-    project.os.upgrate = '0' # Change this 0 to 1 to have the OS to upgrade
+    project_slugname   = 'sluged-project-name'
+    project_os_name    = 'ubuntu'
+    project_os_upgrate = '0' # Change this 0 to 1 to have the OS to upgrade
     # For the dependencies, use the folder names in provisioning/ubuntu/...
-    project.os.dependencies = "system apache php-dev mysql-dev mysql-import-dbs"
+    project_os_dependencies = "system apache php-dev mysql-dev mysql-import-dbs"
 
     config.vm.box      = 'trusty-server-cloudimg-amd64-vagrant-disk1.box'
     config.vm.box_url  = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
-    config.vm.hostname = "#{project.slugname}.dev"
+    config.vm.hostname = "#{project_slugname}.dev"
     config.vm.synced_folder "./", "/vagrant/", id: "vagrant-root", type: "nfs"
-    config.vm.synced_folder ".", "/var/www/#{project.slugname}", id: "www", type: "nfs"
+    config.vm.synced_folder ".", "/var/www/#{project_slugname}", id: "www", type: "nfs"
 
     config.vm.provider :virtualbox do |vb|
         # vb.gui = true
@@ -34,14 +34,11 @@ Vagrant.configure("2") do |config|
 
     # To install all necessary software
     config.vm.provision :shell do |s|
-        s.path = "./bin/provisioning"
-        s.args = "#{project.os.name} #{project.os.upgrate} #{config.vm.hostname} '#{project.os.dependencies}'" # Change this 0 to 1 to have the OS to upgrade
+        s.path = "./bin/provision"
+        s.args = "#{project_os_name} #{project_os_upgrate} #{config.vm.hostname} '#{project_os_dependencies}'" # Change this 0 to 1 to have the OS to upgrade
     end
 
     # To build the application and create the DB (The cron jobs are not set up in dev!)
     config.vm.provision :shell, :inline => "
-        cd /var/www/#{project.slugname};
-        phing deploy -Dapp_env=dev -verbose;
-        php app/console doctrine:database:create;
-        php app/console doctrine:schema:update --force;"
+        touch inline_provisioning.no-vcs.txt"
 end

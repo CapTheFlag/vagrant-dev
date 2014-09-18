@@ -17,9 +17,9 @@
 apt-get purge phpmyadmin mysql-server mysql-common
 rm -R /etc/mysql/
 rm -R /var/lib/mysql/
-/vagrant/provisioning/ubuntu/mysql/install.sh
-/vagrant/provisioning/ubuntu/mysql-dev-utils/install.sh
-/vagrant/provisioning/ubuntu/mysql-import-dbs/install.sh
+${VAGRANT_DEV_HOME}/provisioning/ubuntu/mysql/install.sh
+${VAGRANT_DEV_HOME}/provisioning/ubuntu/mysql-dev-utils/install.sh
+${VAGRANT_DEV_HOME}/provisioning/ubuntu/mysql-import-dbs/install.sh
 
 
 exit 0

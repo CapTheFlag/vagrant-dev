@@ -2,7 +2,8 @@
 
 ## DESCRIPTION
 
-    This is a script to provision a vagrant box with all necessary software for developing a project.
+    This is a script to provision a vagrant box with all necessary software for developing
+        a project.
 
 ### INSTALLATION
 
@@ -17,12 +18,14 @@
             "hgraca/vagrant-dev": "dev-master"
         },
 
-    - Put the vendor/vagrant-dev/vagrantfile.dist in the project root and rename it to vagrantfile.
+    - Put the vendor/vagrant-dev/vagrantfile.dist in the project root and rename it to
+        vagrantfile.
         Open the file and change the variables project.XXX, but please note
             that there is no support (yet) for an OS other than Ubuntu
         You should also edit the last inline provisioning command so that it
             corresponds to the project build process
-    - Create a folder, in the project root, named 'provisioning' where you will put a settings file
+    - Create a folder, in the project root, named 'provisioning' where you will put a
+        settings file:
             cp vendor/vagrant-dev/settings.dist.sh to provisioning/settings.sh
         and the DB dumps you want to recover into the DB server, under a folder called:
             provisioning/db/db_name.sql
