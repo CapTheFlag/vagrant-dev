@@ -1,0 +1,14 @@
+#
+# For vagrant to connect
+#
+Host vagrant
+    Hostname 192.168.1.1
+    IdentityFile ~/.ssh/vagrant.pvt
+
+#
+# For some other host
+#
+# Host github
+#     User gitusername
+#     Hostname github.com
+#     IdentityFile ~/.ssh/github_rsa.pvt

@@ -1,0 +1,15 @@
+{
+    "name": "hgraca/vagrant-dev",
+    "type": "application",
+    "description": "An bash application for easy vagrant box provisioning of PHP projects.",
+    "keywords": ["bash", "vagrant", "dev", "provision"],
+    "homepage": "https://github.com/hgraca/vagrant-dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Herberto Graca",
+            "email": "herberto.graca@gmail.com"
+        }
+    ],
+    "bin": ["provision"]
+}
