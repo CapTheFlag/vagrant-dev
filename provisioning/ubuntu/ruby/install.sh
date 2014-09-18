@@ -22,15 +22,12 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="ruby"
-
 # ==================================================================
 #
 # MAIN
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo "Installing ruby ... "
 apt-get install -y ruby
@@ -39,8 +36,6 @@ echo
 echo "Done"
 echo
 
-update_installed 'ruby'
 
-phase_finish
 
 exit 0

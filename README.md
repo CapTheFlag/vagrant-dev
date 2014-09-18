@@ -18,17 +18,33 @@
             "hgraca/vagrant-dev": "dev-master"
         },
 
-    - Put the vendor/vagrant-dev/vagrantfile.dist in the project root and rename it to
-        vagrantfile.
-        Open the file and change the variables project.XXX, but please note
-            that there is no support (yet) for an OS other than Ubuntu
-        You should also edit the last inline provisioning command so that it
-            corresponds to the project build process
-    - Create a folder, in the project root, named 'provisioning' where you will put a
-        settings file:
-            cp vendor/vagrant-dev/settings.dist.sh to provisioning/settings.sh
-        and the DB dumps you want to recover into the DB server, under a folder called:
-            provisioning/db/db_name.sql
+    - Copy the folder ./vendor/vagrant-dev/dist to ./provisioning
+    - Create a link from ./vagrantfile to ./provisioning/vagrantfile
+    - Adjust all config options in ./provisioning:
+        - vagrantfile:
+            Open the file and change the variables project_XXX, but please note
+                that there is no support (yet) for an OS other than Ubuntu
+            You should also edit the last inline provisioning command so that it
+                corresponds to the project build process
+        - provisioning/settings.sh
+        - provisioning/apache/sluged-project-name.dev.conf
+            Edit to replace sluged-project-name fot the actual project name,
+                both in the contents and in the filename
+        - provisioning/db/:
+            Put here the dump files for the DBs, with the DB name as the
+                filename and the extension '.sql'
+        - provisioning/git-server/pub_ssh_keys:
+            If you need a git server, put here the pub ssh keys that will need access to it
+        - provisioning/system/scripts/:
+            Put here custom scripts that you want to have available inside the VM
+            (they will be linked with lowarcased name and no extension)
+        - provisioning/system/scripts/tailLogs.sh:
+            Edit to add the logs paths relevant to the main project
+        - provisioning/system/ssh-no-vcs/:
+            Put here the private ssh keys that you want to have available in the VM
+            (you should add *no-vcs* to the main project .gitignore)
+        - provisioning/system/hosts:
+            Edit to replace sluged-project-name fot the actual project name
 
 ### USAGE
 

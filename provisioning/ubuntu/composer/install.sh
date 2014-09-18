@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="COMPOSER"
 DEPENDENCIES=( php )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=( php )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -62,8 +60,6 @@ fi
 ' > /usr/bin/composer
 chmod a+x /usr/bin/composer
 
-update_installed 'composer'
 
-phase_finish
 
 exit 0

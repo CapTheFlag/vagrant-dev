@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="PHP"
 DEPENDENCIES=( )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=( )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -42,13 +40,13 @@ echo
 echo "Installing PHP ... "
 echo
 # php5-json    Needed for composer to install and work at least in version 13.10
-# php5-xsl     Needed for phpdox, used to generate documentation 
+# php5-xsl     Needed for phpdox, used to generate documentation
 # php5-suhosin Extra security
 apt-get -y install php5 php5-common php5-cli php5-dev php-pear php5-mysql php5-intl php5-curl php5-json php5-xsl php5-memcache php5-memcached memcached
 # php-xml php-pdo php-mbstring php-bcmath php-common php-soap php-gd php-imap php-ldap php-odbc php-xmlrpc
 
 # extra packages from http://www.howtoforge.com/perfect-server-ubuntu-14.04-apache2-php-mysql-pureftpd-bind-dovecot-ispconfig-3-p4
-# php5-gd php5-imap phpmyadmin php5-cgi php-pear php-auth php5-mcrypt mcrypt php5-imagick imagemagick libruby 
+# php5-gd php5-imap phpmyadmin php5-cgi php-pear php-auth php5-mcrypt mcrypt php5-imagick imagemagick libruby
 # php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc
 
 if [ $(echo "${OS_VERSION} < 13.10" | bc) -eq 1 ]; then
@@ -136,8 +134,6 @@ export APPLICATION_ENV="${APPLICATION_ENV}" # so that after installing its imedi
 
 # ------------------------------------------------------------------
 
-update_installed 'php'
 
-phase_finish
 
 exit 0

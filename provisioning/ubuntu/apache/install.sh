@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="APACHE"
 DEPENDENCIES=(  )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=(  )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -49,7 +47,11 @@ else
 fi
 
 mkdir -p ${PROJECT_PATH}
-cp ${DIR}/templates/${PROJECT_NAME}.dev.conf /etc/apache2/sites-enabled/${PROJECT_NAME}.dev.conf
+if [ ! -f "/vagrant/provisioning/apache/${PROJECT_NAME}.dev.conf" ]; then
+    log error "The apache config file was not found in '/vagrant/provisioning/apache/${PROJECT_NAME}.dev.conf'. The link to it will be created so you just need to add the file and restart apache."
+fi
+ln -sf /vagrant/provisioning/apache/${PROJECT_NAME}.dev.conf /etc/apache2/sites-enabled/${PROJECT_NAME}.dev.conf
+
 
 # hardcode env variables so we can restart apache when vagrant mounts /vagrant
 # I DONT REMEMBER WHY THIS IS NEEDED AND ITS GIVING PROBLEMS, SO I TAKE IT OUT
@@ -83,8 +85,6 @@ a2enmod rewrite
 a2enmod headers
 service apache2 restart
 
-update_installed 'apache'
 
-phase_finish
 
 exit 0

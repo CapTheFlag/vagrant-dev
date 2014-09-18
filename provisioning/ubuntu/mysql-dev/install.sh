@@ -20,7 +20,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="MYSQL-DEV"
 DEPENDENCIES=( php mysql )
 
 # ==================================================================
@@ -29,7 +28,6 @@ DEPENDENCIES=( php mysql )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -113,8 +111,6 @@ echo
 
 
 
-update_installed 'mysql-dev'
 
-phase_finish
 
 exit 0

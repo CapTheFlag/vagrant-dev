@@ -4,7 +4,7 @@
 echo
 echo "Importing functions ... "
 echo
-. /vagrant/vendor/vagrant-dev/provisioning/lib.ubuntu.sh
+. ${VAGRANT_DEV_HOME}/provisioning/lib.ubuntu.sh
 
 
 echo
@@ -39,3 +39,5 @@ PHPMYADMIN_ROOT_PASS='xpto'
 
 # This will be set in the guest /etc/hosts file, so the application can run in the guest and use a DB in the host
 APP_DB_HOST_IP="127.0.0.1" # replace with "193.168.1.1" to use the DB in the host machine
+
+import_config '/vagrant/provisioning' 'settings.sh'

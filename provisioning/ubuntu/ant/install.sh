@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="ANT"
 DEPENDENCIES=( jdk7 )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=( jdk7 )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -42,8 +40,6 @@ apt-get -y install ant
 
 # ------------------------------------------------------------------
 
-update_installed 'ant'
 
-phase_finish
 
 exit 0

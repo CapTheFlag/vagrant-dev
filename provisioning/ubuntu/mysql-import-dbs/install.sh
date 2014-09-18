@@ -11,7 +11,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 . ${DIR}/../settings.sh
 
-PHASE="MYSQL-IMPORT-DBs"
 DEPENDENCIES=( mysql )
 
 # ==================================================================
@@ -20,7 +19,6 @@ DEPENDENCIES=( mysql )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -31,7 +29,7 @@ echo
 echo "Importing DBs to MySQL ... "
 echo
 
-DBs_SOURCE="${DIR}/DBs-no-vcs"
+DBs_SOURCE="/vagrant/provisioning/db"
 
 # make sure the filenames dont have spaces
 find ${DBs_SOURCE} -name "* *" -type f | rename 's/ /_/g'
@@ -48,8 +46,6 @@ for FILE in ${FILES[@]}; do
 done
 
 
-update_installed 'mysql-import-dbs'
 
-phase_finish
 
 exit 0

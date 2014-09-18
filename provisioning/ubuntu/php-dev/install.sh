@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="PHP-DEV"
 DEPENDENCIES=( git multitail php composer )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=( git multitail php composer )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -182,8 +180,6 @@ pear install PHP_CodeSniffer
 # echo
 # cp -fR /vagrant/workspace/www/* /var/www/
 
-update_installed 'php-dev'
 
-phase_finish
 
 exit 0

@@ -108,12 +108,12 @@ On_IWhite='\e[0;107m'   # White
 #
 function on_error {
     if [ ! $? -eq 0 ]; then
-        echo 
+        echo
         echo "An error occurred during:"
         echo -e "   ${Red}${PHASE}${Color_Off}"
         echo "For detailed errors, see above"
         echo "Aborting script"
-        echo 
+        echo
         exit 1
     fi
 }
@@ -122,18 +122,18 @@ function on_error {
 # function to display the description of the current phase
 #
 function phase_start {
-    echo 
+    echo
     echo -e "${BIYellow}Starting phase:   ${PHASE}${Color_Off}"
-    echo 
+    echo
 }
 
 #
 # function to notify the end of the current phase
 #
-function phase_finish {
-    echo 
+function phase_finish ${APP_NAME} {
+    echo
     echo -e "${BIBlue}Finished phase:   ${PHASE}${Color_Off}"
-    echo 
+    echo
 }
 
 #

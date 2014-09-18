@@ -1,7 +1,3 @@
-wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
-$ unzip awscli-bundle.zip
-$ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-
 #!/bin/bash
 
 #
@@ -26,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="AWS-CLI"
 DEPENDENCIES=( )
 
 # ==================================================================
@@ -35,7 +30,6 @@ DEPENDENCIES=( )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -58,12 +52,10 @@ echo
 
 if [ "1" == "${IN_VAGRANT_BOX}" ]; then
     ln -s -f /vagrant/no-vcs/aws_credentials /home/vagrant/.aws
-else 
+else
     echo -e "   ${BIPurple}Don't forget to set up your AWS credentials in ~/.aws/${Color_Off}"
 fi
 
-update_installed 'AWS-CLI'
 
-phase_finish
 
 exit 0

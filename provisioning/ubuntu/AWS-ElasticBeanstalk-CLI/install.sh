@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="AWS-EB-CLI"
 DEPENDENCIES=( ruby )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=( ruby )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -59,12 +57,10 @@ ln -s -f /opt/${FOLDER_NAME}/eb/linux/python2.7/eb /usr/bin/eb
 
 if [ "1" == "${IN_VAGRANT_BOX}" ]; then
     ln -s -f /vagrant/no-vcs/ebs_credentials /home/vagrant/.elasticbeanstalk
-else 
+else
     echo -e "   ${BIPurple}Don't forget to set up your EB credentials in ~/.elasticbeanstalk/${Color_Off}"
 fi
 
-update_installed 'AWS-ElasticBeanstalk-CLI'
 
-phase_finish
 
 exit 0

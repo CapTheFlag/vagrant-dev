@@ -10,7 +10,7 @@
 ::1             localhost
 fe80::1%lo0     localhost
 
-193.168.1.1 host hgraca.local
+193.168.1.1 host
 
 ##
 # BOX
@@ -18,19 +18,4 @@ fe80::1%lo0     localhost
 
 127.0.1.1       vagrant.vm  vagrant
 # Box hostname should always point to itself
-127.0.1.1       dev0.dev dev1.dev dev2.dev dev3.dev dev4.dev dev5.dev dev6.dev dev7.dev dev8.dev dev9.dev
-
-##
-# VMs
-##
-
-193.168.1.10 dev0
-193.168.1.11 dev1
-193.168.1.12 dev2
-193.168.1.13 dev3
-193.168.1.14 dev4
-193.168.1.15 dev5
-193.168.1.16 dev6
-193.168.1.17 dev7
-193.168.1.18 dev8
-193.168.1.19 dev9
+127.0.1.1       sluged-project-name.dev

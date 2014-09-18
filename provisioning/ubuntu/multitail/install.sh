@@ -47,6 +47,4 @@ done
 
 
 
-update_installed 'multitail'
-
 exit 0

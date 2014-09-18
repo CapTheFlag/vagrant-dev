@@ -22,15 +22,12 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="JDK7"
-
 # ==================================================================
 #
 # MAIN
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo "Installing openjdk-7-jdk ... "
 apt-get install -y openjdk-7-jdk
@@ -39,8 +36,6 @@ echo
 echo "Done"
 echo
 
-update_installed 'jdk7'
 
-phase_finish
 
 exit 0

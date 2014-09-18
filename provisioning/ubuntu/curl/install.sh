@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="CURL"
 DEPENDENCIES=(  )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=(  )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -40,8 +38,6 @@ install_apps DEPENDENCIES[@]
 
 apt-get install -y curl libcurl3 libcurl3-dev php5-curl
 
-update_installed 'curl'
 
-phase_finish
 
 exit 0

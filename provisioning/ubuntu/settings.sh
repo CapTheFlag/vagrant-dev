@@ -13,3 +13,5 @@ SETTINGS_DIR_3="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . ${SETTINGS_DIR_3}/../settings.sh
 
 APPLICATIONS_DIR=${SETTINGS_DIR_3}
+
+APP_NAME=${DIR##*/}

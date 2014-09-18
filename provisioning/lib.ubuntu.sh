@@ -163,11 +163,11 @@ function import_config {
     FOLDER_PATH=${REAL_PATH%/*}             # echo $FOLDER_PATH
 
     if [ -f "${ABSOLUT_ROOT_PATH}/${CONFIG_FILE_NAME}" ]; then
-        . ${ABSOLUT_ROOT_PATH}/deploy.cnf.sh
+        . ${ABSOLUT_ROOT_PATH}/${CONFIG_FILE_NAME}
     elif [ -f "${ABSOLUT_ROOT_PATH}/app/${CONFIG_FILE_NAME}" ]; then
-        . ${ABSOLUT_ROOT_PATH}/app/deploy.cnf.sh
+        . ${ABSOLUT_ROOT_PATH}/app/${CONFIG_FILE_NAME}
     elif [ -f "${ABSOLUT_ROOT_PATH}/app/config/${CONFIG_FILE_NAME}" ]; then
-        . ${ABSOLUT_ROOT_PATH}/app/config/deploy.cnf.sh
+        . ${ABSOLUT_ROOT_PATH}/app/config/${CONFIG_FILE_NAME}
     else
         log error "Could not find the config file. It must be located at ./${CONFIG_FILE_NAME} or ./app/${CONFIG_FILE_NAME} or ./app/config/${CONFIG_FILE_NAME}. You can get a template at ${FOLDER_PATH}/${CONFIG_FILE_NAME}" 100
     fi
@@ -192,8 +192,9 @@ function on_error {
 # function to display the description of the current phase
 #
 function phase_start {
+    APP=$1
     echo
-    echo -e "${BIYellow}Starting phase:   ${PHASE}${Color_Off}"
+    echo -e "${BIYellow}Starting app:   ${APP}${Color_Off}"
     echo
 }
 
@@ -201,8 +202,9 @@ function phase_start {
 # function to notify the end of the current phase
 #
 function phase_finish {
+    APP=$1
     echo
-    echo -e "${BIBlue}Finished phase:   ${PHASE}${Color_Off}"
+    echo -e "${BIBlue}Finished app:   ${APP}${Color_Off}"
     echo
 }
 
@@ -246,7 +248,10 @@ function install_apps {
 
         if [[ ! ${INSTALLED["$APP"]} ]]; then
             if [ -f ${APPLICATIONS_DIR}/${APP}/install.sh ]; then
+                phase_start ${APP}
                 ${APPLICATIONS_DIR}/${APP}/install.sh ${ENV} ${HOSTNAME}
+                update_installed ${APP}
+                phase_finish ${APP}
             else
                 echo "Application '${APP}' install script not found (${APPLICATIONS_DIR}/${APP}/install.sh)."
             fi

@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="VSFTPD"
 DEPENDENCIES=(  )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=(  )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -42,8 +40,6 @@ apt-get -y install vsftpd
 
 # ------------------------------------------------------------------
 
-update_installed 'vsftpd'
 
-phase_finish
 
 exit 0

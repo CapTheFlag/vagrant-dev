@@ -11,7 +11,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 . ${DIR}/../settings.sh
 
-PHASE="MYSQL"
 DEPENDENCIES=(  )
 
 # ==================================================================
@@ -20,7 +19,6 @@ DEPENDENCIES=(  )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -60,9 +58,7 @@ mysql -u root -pxpto -e "GRANT ALL PRIVILEGES ON * . * TO 'root'@'${IP}' IDENTIF
 
 
 
-update_installed 'mysql'
 
-phase_finish
 
 exit 0
 

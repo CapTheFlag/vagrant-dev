@@ -27,7 +27,6 @@ if [ $# -ne 0 ]; then
     HOSTNAME=$2
 fi
 
-PHASE="SYSTEM"
 DEPENDENCIES=(  )
 
 # ==================================================================
@@ -35,8 +34,6 @@ DEPENDENCIES=(  )
 # MAIN
 #
 # ------------------------------------------------------------------
-
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -106,22 +103,22 @@ apt-get -y install tree build-essential zip unzip python-software-properties acl
 echo
 echo "Setting up links to the shared utilities ... "
 echo
-ORIGIN="${DIR}/scripts"
 DESTINATION="/usr/bin"
 
 # make sure the filenames dont have spaces
 find ${ORIGIN} -name "*.sh" -type f | rename 's/ /_/g'
 
+# for the default scripts
+ORIGIN="${DIR}/scripts"
 FILES=`find ${ORIGIN} -type f -print`
-
 for FILE in ${FILES[@]}; do
     LINK_NAME=`basename ${FILE} .sh`
     LINK_NAME=`echo ${LINK_NAME} | tr '[:upper:]' '[:lower:]'`
     ln -sf ${FILE} ${DESTINATION}/${LINK_NAME}
 done
 
-# for files outside the vcs
-ORIGIN="${DIR}/scripts-no-vcs"
+# for files outside the vagrant-dev
+ORIGIN="/vagrant/provisioning/system/scripts"
 if [ -d ${ORIGIN} ]; then
     # make sure the filenames dont have spaces
     find ${ORIGIN} -name "*.sh" -type f | rename 's/ /_/g'
@@ -147,7 +144,7 @@ echo
 echo
 echo "Setting the hosts file ..."
 echo
-cp -f ${DIR}/templates/hosts /etc/hosts
+cp -f /vagrant/provisioning/system/hosts /etc/hosts
 
 # ------------------------------------------------------------------
 
@@ -216,11 +213,5 @@ service sendmail restart
 echo
 echo "fix for 'locate: can not stat () '/var/lib/mlocate/mlocate.db' ' "
 updatedb
-
-
-
-update_installed 'system'
-
-phase_finish
 
 exit 0

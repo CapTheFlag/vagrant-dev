@@ -22,7 +22,6 @@ if [ $# -ne 0 ]; then
     ENV=$1
 fi
 
-PHASE="GIT-SERVER"
 DEPENDENCIES=( git )
 
 # ==================================================================
@@ -31,7 +30,6 @@ DEPENDENCIES=( git )
 #
 # ------------------------------------------------------------------
 
-phase_start
 
 echo
 echo "Installing dependencies ... "
@@ -50,7 +48,7 @@ chmod 755 /home/git/git-shell-commands
 #chsh -s /usr/bin/git-shell git
 
 mkdir -p /home/git/.ssh
-FILES="${DIR}/pub_ssh_keys/*"
+FILES="/vagrant/provisioning/git-server/pub_ssh_keys/*"
 for file in $FILES
 do
   cat $file >> /home/git/.ssh/authorized_keys
@@ -64,9 +62,7 @@ echo "You also need to add the ssh public keys to the git user ~/.ssh/authorized
 echo "Then you add this remote like: git remote add remotename git://IPADDRESS"
 echo "Then you can push to it like: git push remotename destination-branch-name"
 
-update_installed 'git-server'
 
-phase_finish
 
 exit 0
 
