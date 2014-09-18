@@ -5,10 +5,20 @@
     This is a script to provision a vagrant box with all necessary software for developing a project.
 
 ### INSTALLATION
-    - Add this to composer.json
 
-    - Put the vagrantfile.dist in the project root and rename it to vagrantfile.
-    - Open the file and change the variables project.XXX, but please note
+    - Add this to composer.json:
+        "repositories": [
+            {
+                "url": "https://github.com/hgraca/vagrant-dev",
+                "type": "git"
+            }
+        ],
+        "require-dev": {
+            "hgraca/vagrant-dev": "dev-master"
+        },
+
+    - Put the vendor/vagrant-dev/vagrantfile.dist in the project root and rename it to vagrantfile.
+        Open the file and change the variables project.XXX, but please note
             that there is no support (yet) for an OS other than Ubuntu
         You should also edit the last inline provisioning command so that it
             corresponds to the project build process
@@ -18,6 +28,7 @@
             provisioning/db/db_name.sql
 
 ### USAGE
+
     - Tested in Linux with VirtualBox 4.3.12 and Vagrant 1.6.3
 
     - Install virtualbox from https://www.virtualbox.org/wiki/Downloads
