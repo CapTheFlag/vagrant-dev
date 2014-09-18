@@ -21,15 +21,16 @@
     - Copy the folder ./vendor/vagrant-dev/dist to ./provisioning
     - Create a link from ./vagrantfile to ./provisioning/vagrantfile
     - Adjust all config options in ./provisioning:
+        - Replace all occurrences of sluged-project-name for the actual project name
         - vagrantfile:
             Open the file and change the variables project_XXX, but please note
                 that there is no support (yet) for an OS other than Ubuntu
             You should also edit the last inline provisioning command so that it
                 corresponds to the project build process
         - provisioning/settings.sh
+            Adjust all settings
         - provisioning/apache/sluged-project-name.dev.conf
-            Edit to replace sluged-project-name fot the actual project name,
-                both in the contents and in the filename
+            Replace sluged-project-name in the filename for the actual project name
         - provisioning/db/:
             Put here the dump files for the DBs, with the DB name as the
                 filename and the extension '.sql'
@@ -43,8 +44,6 @@
         - provisioning/system/ssh-no-vcs/:
             Put here the private ssh keys that you want to have available in the VM
             (you should add *no-vcs* to the main project .gitignore)
-        - provisioning/system/hosts:
-            Edit to replace sluged-project-name fot the actual project name
 
 ### USAGE
 

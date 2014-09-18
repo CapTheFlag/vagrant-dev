@@ -11,6 +11,7 @@ GIT_CORE_EDITOR='nano'
 TIMEZONE='Europe/Amsterdam'
 
 PROJECT_NAME='sluged-project-name'
+PROJECT_PATH="/var/www/${PROJECT_NAME}"
 
 ENVIRONMENT='dev'
 ENV='dev' # This is used in the scripts, to know which scripts to run
