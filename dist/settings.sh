@@ -5,7 +5,7 @@ echo "Setting variables ... "
 echo
 
 GIT_USER_NAME='username'
-GIT_USER_EMAIL='user-email@videodock.com'
+GIT_USER_EMAIL='user-email@email.com'
 GIT_CORE_EDITOR='nano'
 
 TIMEZONE='Europe/Amsterdam'
