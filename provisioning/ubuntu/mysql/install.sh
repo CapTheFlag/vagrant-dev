@@ -51,13 +51,10 @@ IP='192.168.1.1'
 mysql -u root -pxpto -e "CREATE USER 'root'@'${IP}' IDENTIFIED BY '${MYSQL_ROOT_PASS}';"
 mysql -u root -pxpto -e "GRANT ALL PRIVILEGES ON * . * TO 'root'@'${IP}' IDENTIFIED BY '${MYSQL_ROOT_PASS}' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;"
 
-# Allow root to connect from 10.0.2.2 NICK
-IP='10.0.2.2'
-mysql -u root -pxpto -e "CREATE USER 'root'@'${IP}' IDENTIFIED BY '${MYSQL_ROOT_PASS}';"
-mysql -u root -pxpto -e "GRANT ALL PRIVILEGES ON * . * TO 'root'@'${IP}' IDENTIFIED BY '${MYSQL_ROOT_PASS}' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;"
-
-
-
+# prevent from starting at boot
+if [ "${IN_VAGRANT_BOX}" == "0" ]; then
+    echo "manual" >> /etc/init/mysql.override
+fi
 
 
 exit 0

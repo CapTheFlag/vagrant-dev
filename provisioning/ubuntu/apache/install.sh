@@ -75,6 +75,12 @@ if [ "1" == "${IN_VAGRANT_BOX}" ]; then
     usermod -G www-data vagrant
     # ------------------------------------------------------------------
 
+else
+
+    update-rc.d apache2 disable
+    # to reverse:
+    # update-rc.d apache2 enable
+
 fi
 
 # TODO: add main user (videodock) to the apache group

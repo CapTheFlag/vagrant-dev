@@ -38,6 +38,9 @@ install_apps DEPENDENCIES[@]
 
 apt-get -y install vsftpd
 
+mv /etc/vsftpd.conf /etc/vsftpd.conf.bkp
+cp ${DIR}/templates/vsftpd.conf /etc/vsftpd.conf
+
 # ------------------------------------------------------------------
 
 
