@@ -36,7 +36,7 @@ echo "Installing dependencies ... "
 echo
 install_apps DEPENDENCIES[@]
 
-apt-get -y install git git-core git-gui git-cola
+apt-get -y install git git-core git-gui git-cola git-flow
 
 # ------------------------------------------------------------------
 
