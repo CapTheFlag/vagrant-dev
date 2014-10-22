@@ -47,18 +47,20 @@ mv composer.phar /usr/bin/composer.phar
 echo
 echo "Making sure composer is executable ..."
 echo
-chmod a+x /usr/bin/composer.phar
+chmod a+rx /usr/bin/composer.phar
 
 echo '
 #!/bin/bash
 
-if [ -f ./composer.phar ]; then
-    php -d memory_limit=-1 ./composer.phar [@]
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ -f ${DIR}/composer.phar ]; then
+    php -d memory_limit=-1 ${DIR}/composer.phar "$@"
 else
-    php -d memory_limit=-1 composer.phar [@]
+    php -d memory_limit=-1 composer.phar "$@"
 fi
 ' > /usr/bin/composer
-chmod a+x /usr/bin/composer
+chmod a+rx /usr/bin/composer
 
 
 

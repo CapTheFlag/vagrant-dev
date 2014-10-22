@@ -18,7 +18,7 @@
             "hgraca/vagrant-dev": "dev-master"
         },
 
-    - Copy the folder ./vendor/vagrant-dev/dist to ./provisioning
+    - Copy the folder ./vendor/hgraca/vagrant-dev/dist to ./provisioning
     - Create a link from ./vagrantfile to ./provisioning/vagrantfile
     - Adjust all config options in ./provisioning:
         - Replace all occurrences of sluged-project-name for the actual project name
