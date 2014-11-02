@@ -62,30 +62,30 @@ xdebug.var_display_max_children=5
 xdebug.max_nesting_level=250
 xdebug.cli_color=1
 
-xdebug.remote_enable=1 ; trigger: cookie:XDEBUG_SESSION=PHPSTORM
-xdebug.remote_host=193.168.1.1
+xdebug.remote_enable=1              ;# trigger: cookie:XDEBUG_SESSION=PHPSTORM
+xdebug.remote_host=${HOST_IP}
 xdebug.remote_connect_back=1
 xdebug.remote_port=9000
 xdebug.remote_handler=dbgp
 xdebug.remote_mode=req
 
 xdebug.profiler_enable=0
-xdebug.profiler_enable_trigger=1 ; trigger: cookie:XDEBUG_PROFILE=1
-xdebug.profiler_output_dir=\"/var/www/xdebug\"
+xdebug.profiler_enable_trigger=1    ;# trigger: cookie:XDEBUG_PROFILE=1
+xdebug.profiler_output_dir=\"${XDEBUG_OUTPUT_DIR}\"
 xdebug.profiler_output_name=\"%H.profiler\"
 
 xdebug.auto_trace=0
-xdebug.trace_enable_trigger=1 ; trigger: cookie:XDEBUG_TRACE=1
+xdebug.trace_enable_trigger=1       ;# trigger: cookie:XDEBUG_TRACE=1
 xdebug.trace_options=0 
 xdebug.collect_params=4
 xdebug.collect_return=1
 xdebug.trace_format=2
-xdebug.trace_output_dir=\"/var/www/xdebug\"
+xdebug.trace_output_dir=\"${XDEBUG_OUTPUT_DIR}\"
 xdebug.trace_output_name=\"%H.trace\"
 
 xdebug.idekey=\"${XDEBUG_IDE_KEY}\""
 echo "${XDEBUG_CONFIG}" >> ${CONFIG_FILE}
-mkdir -p /var/www/xdebug
+mkdir -p "${XDEBUG_OUTPUT_DIR}"
 
 # ------------------------------------------------------------------
 

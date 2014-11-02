@@ -32,12 +32,14 @@ APPLICATION_ENV='dev' # This is set as a shell environment variable
 
 XDEBUG_IDE_KEY="PHPSTORM"
 XDEBUG_CONFIG="idekey=${XDEBUG_IDE_KEY}"
+XDEBUG_OUTPUT_DIR="/var/www/xdebug"
 
 MYSQL_ROOT_PASS='xpto'
 
 PHPMYADMIN_ROOT_PASS='xpto'
 
+HOST_IP='193.168.1.1'
 # This will be set in the guest /etc/hosts file, so the application can run in the guest and use a DB in the host
-APP_DB_HOST_IP="127.0.0.1" # replace with "193.168.1.1" to use the DB in the host machine
+APP_DB_HOST_IP="127.0.0.1" # replace with "${HOST_IP}" to use the DB in the host machine
 
 import_config '/vagrant/provisioning' 'settings.sh'
