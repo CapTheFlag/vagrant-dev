@@ -17,9 +17,18 @@
         "require-dev": {
             "hgraca/vagrant-dev": "dev-master"
         },
+        "scripts": {
+            "post-install-cmd": [
+                "./vendor/hgraca/vagrant-dev/install.sh"
+            ],
+            "post-update-cmd": [
+                "./vendor/hgraca/vagrant-dev/install.sh"
+            ]
+        }
+        
+    - run composer update or install
 
-    - Copy the folder ./vendor/hgraca/vagrant-dev/dist to ./provisioning
-    - Create a link from ./vagrantfile to ./provisioning/vagrantfile
+
     - Adjust all config options in ./provisioning:
         - Replace all occurrences of sluged-project-name for the actual project name
         - vagrantfile:
@@ -42,7 +51,7 @@
         - provisioning/system/scripts/tailLogs.sh:
             Edit to add the logs paths relevant to the main project
         - provisioning/system/ssh-no-vcs/:
-            Put here the private ssh keys that you want to have available in the VM
+            Put here the private ssh keys that you want to have available in the VM but not in the repo
             (you should add *no-vcs* to the main project .gitignore)
 
 ### USAGE

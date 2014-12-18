@@ -74,6 +74,7 @@ if [ "1" == "${IN_VAGRANT_BOX}" ]; then
     echo
     usermod -G www-data vagrant
     # ------------------------------------------------------------------
+    ln -sf /vagrant/provisioning/apache/silex-boilerplate.dev.conf /etc/apache2/sites-enabled/silex-boilerplate.dev.conf
 
 else
 
