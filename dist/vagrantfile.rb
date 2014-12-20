@@ -8,11 +8,12 @@
 
 Vagrant.configure("2") do |config|
 
+    # OPTIONS YOU SHOULD CHANGE:
     project_slugname   = 'sluged-project-name'
     project_os_name    = 'ubuntu'
     project_os_upgrate = '0' # Change this 0 to 1 to have the OS to upgrade
-    # For the dependencies, use the folder names in provisioning/ubuntu/...
-    project_os_dependencies = "system apache php-dev mysql-dev mysql-import-dbs"
+    project_os_dependencies = "system apache php-dev mysql-dev mysql-import-dbs" # These are the folder names in provisioning/ubuntu/...
+    # -------------------------
 
     config.vm.box      = 'trusty-server-cloudimg-amd64-vagrant-disk1.box'
     config.vm.box_url  = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
@@ -35,7 +36,7 @@ Vagrant.configure("2") do |config|
     # To install all necessary software
     config.vm.provision :shell do |s|
         s.path = "./bin/provision"
-        s.args = "#{project_os_name} #{project_os_upgrate} #{config.vm.hostname} '#{project_os_dependencies}'" # Change this 0 to 1 to have the OS to upgrade
+        s.args = "#{project_os_name} #{project_os_upgrate} #{config.vm.hostname} '#{project_os_dependencies}'"
     end
 
     # To build the application and create the DB (The cron jobs are not set up in dev!)
