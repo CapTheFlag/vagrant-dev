@@ -6,6 +6,7 @@
 TIME_ZONE=$1
 
 echo $TIME_ZONE > /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata
 
 sudo ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 

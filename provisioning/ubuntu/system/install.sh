@@ -61,6 +61,15 @@ echo "${APP_DB_HOST_IP} dbhost" >> /etc/hosts
 # ------------------------------------------------------------------
 
 echo
+echo "Installing extra deb sources ... "
+echo
+wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+sh -c 'echo "deb http://archive.getdeb.net/ubuntu trusty-getdeb games" >> /etc/apt/sources.list.d/getdeb.list'
+apt-get update
+
+# ------------------------------------------------------------------
+
+echo
 echo "Installing system utilities ... "
 echo
 # nfs                          is used by vagrant to share folders (its faster than the default filesystem)
@@ -151,7 +160,7 @@ cp -f /vagrant/provisioning/system/hosts /etc/hosts
 echo
 echo "Setting up the Time Zone ... "
 echo
-settimezone ${TIMEZONE}
+setTimezone ${TIMEZONE}
 
 # ------------------------------------------------------------------
 

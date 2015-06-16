@@ -237,6 +237,7 @@ function setTimezone {
     echo $TIME_ZONE > /etc/timezone
 
     sudo ln -sf /usr/share/zoneinfo/${TIME_ZONE} localtime
+    dpkg-reconfigure -f noninteractive tzdata
 
     echo "export TZ=${TIME_ZONE}" >> /etc/bash.bashrc
     export TZ=${TIME_ZONE}
