@@ -31,3 +31,7 @@ composer.phar
 # Project files to NOT ignore #
 ###############################
 !**/.gitkeep
+
+# Proprietary software #
+########################
+usp_*
