@@ -1,0 +1,45 @@
+<dataConfig>
+    <dataSource
+        type="JdbcDataSource"
+        driver="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://dbhostname/dbname?zeroDateTimeBehavior=convertToNull"
+        user="solr"
+        password="somefancypass"
+        batchSize="-1"
+    />
+    <document name="products">
+        <entity
+            name="item"
+            pk="ID"
+            query="SELECT * FROM item"
+            deltaImportQuery="SELECT * FROM item WHERE ID='${dih.delta.id}'"
+            deltaQuery="SELECT id FROM item
+                        WHERE id IN
+                            (SELECT item_id AS id FROM feature WHERE last_modified > '${dih.last_index_time}')
+                            OR id IN
+                                (
+                                SELECT item_id AS id FROM item_category
+                                WHERE item_id IN
+                                    (SELECT id AS item_id FROM category WHERE last_modified > '${dih.last_index_time}')
+                                    OR last_modified > '${dih.last_index_time}'
+                                )
+                            OR last_modified > '${dih.last_index_time}'"
+            >
+            <entity
+                name="feature"
+                pk="ITEM_ID"
+                query="SELECT description AS features FROM feature WHERE item_id='${item.ID}'">
+            </entity>
+            <entity
+                name="item_category"
+                pk="ITEM_ID, CATEGORY_ID"
+                query="SELECT CATEGORY_ID FROM item_category WHERE ITEM_ID='${item.ID}'">
+                <entity
+                    name="category"
+                    pk="ID"
+                    query="SELECT description AS cat FROM category WHERE id = '${item_category.CATEGORY_ID}'">
+                </entity>
+            </entity>
+        </entity>
+    </document>
+</dataConfig>

@@ -49,6 +49,8 @@ echo "Making sure composer is executable ..."
 echo
 chmod a+rx /usr/bin/composer.phar
 
+/usr/bin/composer.phar global require hirak/prestissimo
+
 echo '
 #!/bin/bash
 
@@ -61,7 +63,5 @@ else
 fi
 ' > /usr/bin/composer
 chmod a+rx /usr/bin/composer
-
-
 
 exit 0

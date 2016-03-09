@@ -10,11 +10,11 @@
 rm -f /home/vagrant/.ssh/*
 
 # default ssh files
-cp -f ${VAGRANT_DEV_HOME}/provisioning/ubuntu/system/templates/ssh/* /home/vagrant/.ssh/
+cp -f ${ROOT_PROVISIONING}/ubuntu/system/templates/ssh/* /home/vagrant/.ssh/
 
 # custom ssh files
-if [ -d /vagrant/provisioning/system/ssh-no-vcs ]; then
-    cp -f /vagrant/provisioning/system/ssh-no-vcs/* /home/vagrant/.ssh/
+if [ -d ${ROOT_PROVISIONING}/system/ssh-no-vcs ]; then
+    cp -f ${ROOT_PROVISIONING}/system/ssh-no-vcs/* /home/vagrant/.ssh/
 fi
 
 chmod 644 /home/vagrant/.ssh/*

@@ -346,3 +346,13 @@ function in_string {
         echo "0"
     fi
 }
+
+function in_file {
+    NEEDLE=$1
+    HAYSTACK=$2
+    if grep -q SomeString "$File"; then
+        echo "0"
+    else
+        echo "1"
+    fi
+}

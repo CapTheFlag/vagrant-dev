@@ -43,9 +43,10 @@ apt-get -y install git git-core git-gui git-cola git-flow
 echo
 echo "Setting up Git ... "
 echo
-git config --global user.name ${GIT_USER_NAME} # Sets the default name for git to use when you commit
-git config --global user.email ${GIT_USER_EMAIL} # Sets the default email for git to use when you commit
-git config --global core.editor ${GIT_CORE_EDITOR} # Sets the default editor
+git config --global user.name ${GIT_USER_NAME}               # Sets the default name for git to use when you commit
+git config --global user.email ${GIT_USER_EMAIL}             # Sets the default email for git to use when you commit
+git config --global core.editor ${GIT_CORE_EDITOR}           # Sets the default editor
+git config --global merge.tool meld                          # Sets the default merge tool to be used when there are problems
 git config --global credential.helper 'cache --timeout=3600' # Set the cache to timeout after 1 hour (setting is in seconds)
 
 

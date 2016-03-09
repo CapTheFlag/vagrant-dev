@@ -1,0 +1,5 @@
+mode=unattended
+prefix=/opt/jasperserver-5.1.0
+tomcat_server_port=80
+tomcat_server_shutdown_port=8006
+postgres_password=xpto

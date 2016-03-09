@@ -1,10 +1,13 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_PROVISIONING=`realpath ${DIR}`
+ROOT_UBUNTU="${ROOT_PROVISIONING}/ubuntu"
 
 echo
 echo "Importing functions ... "
 echo
-. ${VAGRANT_DEV_HOME}/provisioning/lib.ubuntu.sh
+. ${ROOT_PROVISIONING}/lib.ubuntu.sh
 
 
 echo
@@ -42,4 +45,4 @@ HOST_IP='193.168.1.1'
 # This will be set in the guest /etc/hosts file, so the application can run in the guest and use a DB in the host
 APP_DB_HOST_IP="127.0.0.1" # replace with "${HOST_IP}" to use the DB in the host machine
 
-import_config '/vagrant/provisioning' 'settings.sh'
+import_config "${ROOT_PROVISIONING}" 'settings.sh'

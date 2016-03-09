@@ -29,7 +29,7 @@ echo
 echo "Importing DBs to MySQL ... "
 echo
 
-DBs_SOURCE="/vagrant/provisioning/db"
+DBs_SOURCE="${ROOT_PROVISIONING}/db"
 
 # make sure the filenames dont have spaces
 find ${DBs_SOURCE} -name "* *" -type f | rename 's/ /_/g'

@@ -127,7 +127,7 @@ for FILE in ${FILES[@]}; do
 done
 
 # for files outside the vagrant-dev
-ORIGIN="/vagrant/provisioning/system/scripts"
+ORIGIN="${ROOT_PROVISIONING}/system/scripts"
 if [ -d ${ORIGIN} ]; then
     # make sure the filenames dont have spaces
     find ${ORIGIN} -name "*.sh" -type f | rename 's/ /_/g'
@@ -153,7 +153,7 @@ echo
 echo
 echo "Setting the hosts file ..."
 echo
-cp -f /vagrant/provisioning/system/hosts /etc/hosts
+cp -f ${ROOT_PROVISIONING}/system/hosts /etc/hosts
 
 # ------------------------------------------------------------------
 

@@ -47,10 +47,10 @@ else
 fi
 
 mkdir -p ${PROJECT_PATH}
-if [ ! -f "/vagrant/provisioning/apache/${PROJECT_NAME}.dev.conf" ]; then
-    log error "The apache config file was not found in '/vagrant/provisioning/apache/${PROJECT_NAME}.dev.conf'. The link to it will be created so you just need to add the file and restart apache."
+if [ ! -f "${ROOT_PROVISIONING}/apache/${PROJECT_NAME}.dev.conf" ]; then
+    log error "The apache config file was not found in '${ROOT_PROVISIONING}/apache/${PROJECT_NAME}.dev.conf'. The link to it will be created so you just need to add the file and restart apache."
 fi
-ln -sf /vagrant/provisioning/apache/${PROJECT_NAME}.dev.conf /etc/apache2/sites-enabled/${PROJECT_NAME}.dev.conf
+ln -sf ${ROOT_PROVISIONING}/apache/${PROJECT_NAME}.dev.conf /etc/apache2/sites-enabled/${PROJECT_NAME}.dev.conf
 
 
 # hardcode env variables so we can restart apache when vagrant mounts /vagrant
@@ -74,7 +74,7 @@ if [ "1" == "${IN_VAGRANT_BOX}" ]; then
     echo
     usermod -G www-data vagrant
     # ------------------------------------------------------------------
-    ln -sf /vagrant/provisioning/apache/silex-boilerplate.dev.conf /etc/apache2/sites-enabled/silex-boilerplate.dev.conf
+    ln -sf ${ROOT_PROVISIONING}/apache/silex-boilerplate.dev.conf /etc/apache2/sites-enabled/silex-boilerplate.dev.conf
 
 else
 
